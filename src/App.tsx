@@ -8,6 +8,7 @@ import RadioBlock from "./components/RadioBlock/RadioBlock";
 import Button from "./components/ButtonConverter";
 import { useCurrencyData } from "./hooks/useCurrencyData";
 import Result from "./components/Result/Result";
+import Wave from "./components/Wave/Wave";
 
 export interface Calculo {
   qtdDolar: number;
@@ -93,6 +94,8 @@ function App() {
           result={resultado}
         />
       )}
+
+      <Wave />
     </div>
   );
 }

@@ -23,7 +23,7 @@ const CurrencyCard = ({handleFields,calculo}: Props) => {
       </InputField>
       <InputField> 
         <label>Taxa do Estado</label> 
-        <Input type="number" name="taxaEstado" placeholder="$"  onInput={handleInputChange}/>
+        <Input type="number" name="taxaEstado" placeholder="0%"  onInput={handleInputChange}/>
       </InputField>
     </FormContainer>
   );
