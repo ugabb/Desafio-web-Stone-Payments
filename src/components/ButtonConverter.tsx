@@ -21,6 +21,7 @@ const ButtonStyled = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
+  box-shadow: 0px 7px 0px #D7E0EB;
 `;
 
 const Button = ({ icon: Icon, text, isActive, converter }: ButtonProps) => {

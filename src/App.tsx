@@ -1,66 +1,98 @@
 import { useState, useEffect } from "react";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 
-import axios from "axios";
-
 // Components
 import Navbar from "./components/Navbar/Navbar";
 import CurrencyCard from "./components/CurrencyCard/CurrencyCard";
 import RadioBlock from "./components/RadioBlock/RadioBlock";
-import Button from "./components/Button";
+import Button from "./components/ButtonConverter";
 import { useCurrencyData } from "./hooks/useCurrencyData";
+import Result from "./components/Result/Result";
 
 export interface Calculo {
-  qtdDolar: number | undefined;
-  taxaEstado: number | undefined;
-  type: string | undefined;
+  qtdDolar: number;
+  taxaEstado: number;
+  type: string;
 }
 
 function App() {
   const { data } = useCurrencyData();
 
   const [calculo, setCalculo] = useState<Calculo>({
-    qtdDolar: undefined,
-    taxaEstado: undefined,
-    type: undefined,
+    qtdDolar: 0,
+    taxaEstado: 0,
+    type: "undefined",
   });
+  const [showResult, setShowResult] = useState<boolean>(false);
+
+  const [resultado, setResultado] = useState(0);
 
   const handleFields = (newData: Calculo) => {
     setCalculo(newData);
   };
 
-  function converter(): number | string {
-    console.log(calculo.taxaEstado,calculo.qtdDolar)
-    let convertido;
+  const atualDolar: number = Number(data?.bid);
+
+  function converter(): number {
+    let convertido: number = 0;
+
+    // Se dinheiro está selecionado e foi recebido valores do usuario
     if (calculo.type == "dinheiro" && calculo.qtdDolar && calculo.taxaEstado) {
       convertido =
-        (calculo.qtdDolar + (calculo.taxaEstado)) * (calculo.qtdDolar + 0.011);
+        (calculo.qtdDolar + calculo.taxaEstado) * (atualDolar + 0.011);
     }
 
+    // Se cartão está selecionado e foi recebido valores do usuario
     if (calculo.type == "cartao" && calculo.qtdDolar && calculo.taxaEstado) {
       convertido =
-        (calculo.qtdDolar + calculo.taxaEstado) * (calculo.qtdDolar + 0.064);
+        (calculo.qtdDolar + calculo.taxaEstado) * (atualDolar + 0.064);
     }
 
-    console.log(`Total: ${convertido}`)
-    return `Total: ${convertido}`;
+    // 2 casas depois da vírugula e converte para number
+    const resultado = Number(convertido.toFixed(2));
+    console.log(`Total: ${resultado}`);
+    // mostrar o component de resultado
+    toggleShowResult();
+
+    // atualiza o resultado do calculo
+    setResultado(resultado);
+    return resultado;
   }
+
+  const toggleShowResult = () => {
+    return setShowResult(!showResult);
+  };
 
   return (
     <div className="container">
       <Navbar />
-      <CurrencyCard handleFields={handleFields} calculo={calculo} />
-      <RadioBlock handleFields={handleFields} calculo={calculo} />
-      <Button
-        icon={RiArrowLeftRightLine}
-        text="Converter"
-        isActive={
-          calculo.qtdDolar && calculo.taxaEstado && calculo.type != undefined
-            ? true
-            : false
-        }
-        converter={converter}
-      />
+      {showResult == false && (
+        <>
+          <CurrencyCard handleFields={handleFields} calculo={calculo} />
+          <RadioBlock handleFields={handleFields} calculo={calculo} />
+          <Button
+            icon={RiArrowLeftRightLine}
+            text="Converter"
+            isActive={
+              calculo.qtdDolar &&
+              calculo.taxaEstado &&
+              calculo.type != undefined
+                ? true
+                : false
+            }
+            converter={converter}
+          />
+        </>
+      )}
+
+      {showResult && (
+        <Result
+          cotacaoDolar={atualDolar}
+          taxa={calculo.taxaEstado}
+          toggleShowResult={toggleShowResult}
+          result={resultado}
+        />
+      )}
     </div>
   );
 }
