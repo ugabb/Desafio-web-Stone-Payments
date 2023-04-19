@@ -11,7 +11,7 @@ const CurrencyCard = ({handleFields,calculo}: Props) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
-    const newData = {...calculo, [name]: value};
+    const newData = {...calculo, [name]: Number(value)};
     handleFields(newData)
   }
 

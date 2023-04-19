@@ -1,4 +1,4 @@
 
-export default function converter(): number|void{
-    return console.log("converter")
+export default function converter(): number{
+    return 2
 }

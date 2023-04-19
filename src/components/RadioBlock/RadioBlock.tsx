@@ -20,8 +20,8 @@ interface RadioOption {
 }
 
 const options: RadioOption[] = [
-  { label: "Dinheiro", value: 'Dinheiro' },
-  { label: "Cartão", value: 'Cartao' },
+  { label: "Dinheiro", value: 'dinheiro' },
+  { label: "Cartão", value: 'cartao' },
 ];
 
 const RadioBlock = ({handleFields,calculo}: Props) => {
