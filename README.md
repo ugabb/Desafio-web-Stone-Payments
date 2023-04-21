@@ -17,3 +17,6 @@ Este é um projeto para estudo de uma aplicação web desenvolvida pela equipe d
 
 ## Visite!! 🔗
 - https://stone-payments-46br7x5hx-uslv.vercel.app/
+
+### Proposta do desafio
+- https://github.com/stone-payments/template-desafio-web
