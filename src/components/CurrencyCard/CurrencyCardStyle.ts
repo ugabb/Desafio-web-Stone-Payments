@@ -4,6 +4,12 @@ const FormContainer = styled.div`
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
+
+  @media screen and (max-width:425px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const InputField = styled.div`

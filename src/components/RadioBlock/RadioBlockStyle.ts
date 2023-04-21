@@ -9,6 +9,11 @@ const RadioContainer = styled.div`
     h3{
         color: #2E3742;
     }
+
+    @media screen and (max-width:425px) {
+      justify-content: center;
+      align-items: center;
+    }
 `
 
 const RadioGroup = styled.div`

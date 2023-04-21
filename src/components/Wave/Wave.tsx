@@ -4,9 +4,7 @@ import { WaveImage } from './WaveStyle'
 
 const Wave = () => {
   return (
-    <div>
-        <WaveImage src='./bg-dolar.png'/>
-    </div>
+    <WaveImage/>
   )
 }
 

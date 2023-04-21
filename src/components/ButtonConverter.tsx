@@ -22,6 +22,10 @@ const ButtonStyled = styled.button`
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0px 7px 0px #D7E0EB;
+
+  @media screen and (max-width:425px) {
+    margin: 0 auto;
+  }
 `;
 
 const Button = ({ icon: Icon, text, isActive, converter }: ButtonProps) => {
