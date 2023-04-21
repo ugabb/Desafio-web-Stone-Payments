@@ -22,7 +22,7 @@ function App() {
   const [calculo, setCalculo] = useState<Calculo>({
     qtdDolar: 0,
     taxaEstado: 0,
-    type: "undefined",
+    type: "",
   });
   const [showResult, setShowResult] = useState<boolean>(false);
 
@@ -51,7 +51,7 @@ function App() {
 
     // 2 casas depois da vírugula e converte para number
     const resultado = Number(convertido.toFixed(2));
-    console.log(`Total: ${resultado}`);
+ 
     // mostrar o component de resultado
     toggleShowResult();
 
@@ -60,7 +60,14 @@ function App() {
     return resultado;
   }
 
+  
+
   const toggleShowResult = () => {
+    setCalculo({
+      qtdDolar: 0,
+      taxaEstado: 0,
+      type: '',
+    })
     return setShowResult(!showResult);
   };
 
