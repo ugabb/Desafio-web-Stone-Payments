@@ -51,7 +51,7 @@ function App() {
 
     // 2 casas depois da vírugula e converte para number
     const resultado = Number(convertido.toFixed(2));
- 
+
     // mostrar o component de resultado
     toggleShowResult();
 
@@ -60,14 +60,15 @@ function App() {
     return resultado;
   }
 
-  
-
   const toggleShowResult = () => {
-    setCalculo({
-      qtdDolar: 0,
-      taxaEstado: 0,
-      type: '',
-    })
+    if (showResult) {
+      setCalculo({
+        qtdDolar: 0,
+        taxaEstado: 0,
+        type: "",
+      });
+    }
+
     return setShowResult(!showResult);
   };
 
