@@ -28,6 +28,7 @@ const ButtonVoltar = styled.button`
 const Value = styled.h1`
   color: #00ab63;
   font-size: 64px;
+  
 `;
 
 const h3 = styled.h3`

@@ -26,6 +26,12 @@ const Label = styled.label`
     align-items: center;
     gap: .5rem;
     color: #2E3742;
+
+    @font-face {
+      font-family: 'Circular Std';
+      src: url('./CircularStd-Medium.ttf');
+    }
+    font-family:'Circular Std';
 `
 
 const RadioInput = styled.input.attrs({ type: 'radio' })`
